@@ -1,0 +1,10 @@
+#util_box { position: relative; width: 800px; margin: 0 auto; }
+#util_box h3 { margin-top: 30px;	padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
+#util_box .title { margin-top: 30px; padding: 10px; border-bottom: solid 2px #516e7f; font-size: 20px; }
+
+#util_list li { padding: 10px 0; border-bottom: solid 1px #dddddd; }
+#util_list span { display: inline-block; text-align: center;}
+#util_list .col1 { width: 100px; }
+#util_list .col2 { width: 100px; }
+#util_list .col3 { width: 100px; }
+#util_list .col4 { width: 100px; }
