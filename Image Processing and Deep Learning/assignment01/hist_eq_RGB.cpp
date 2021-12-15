@@ -4,8 +4,8 @@ void hist_eq_Color(Mat &input, Mat &equalized, G(*trans_func)[3], float **CDF);
 
 int main() {
 
-	Mat input = imread("input.jpg", CV_LOAD_IMAGE_COLOR); //이미지를 컬러로 불러오기
-	Mat equalized_RGB = input.clone(); //equalized_rgb에 input이미지를 복사한다.
+	Mat input = imread("input.jpg", CV_LOAD_IMAGE_COLOR); 
+	Mat equalized_RGB = input.clone(); 
 
 	//PDF or transfer function txt files
 	FILE *f_equalized_PDF_RGB, *f_PDF_RGB; 
@@ -64,7 +64,7 @@ int main() {
 // histogram equalization on 3 channel image
 void hist_eq_Color(Mat &input, Mat &equalized, G(*trans_func)[3], float **CDF) {
 	// compute transfer function
-	for (int i = 0; i < L; i++) {// 3 컬러 채널에 대한 for문을 추가한다,
+	for (int i = 0; i < L; i++) {
 		for (int j = 0; j < 3; j++) {
 			trans_func[i][j] = (G)((L - 1) * CDF[i][j]);
 		}
@@ -72,7 +72,7 @@ void hist_eq_Color(Mat &input, Mat &equalized, G(*trans_func)[3], float **CDF) {
 
 
 	// perform the transfer function
-	for (int i = 0; i < input.rows; i++) // 3 컬러 채널에 대한 for문을 추가한다,
+	for (int i = 0; i < input.rows; i++) 
 		for (int j = 0; j < input.cols; j++)
 			for (int k = 0; k < 3; k++) {
 				equalized.at<C>(i, j)[k] = trans_func[input.at<C>(i, j)[k]][k];
