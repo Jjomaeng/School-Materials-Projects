@@ -48,7 +48,7 @@ float *cal_PDF(Mat &input) {
 // generate PDF for color image
 float **cal_PDF_RGB(Mat &input) {
 
-	int count[L][3] = { 0 };  //color 이미지 이기 때문에 이차원으로 선언
+	int count[L][3] = { 0 };  
 	float **PDF = (float**)malloc(sizeof(float*) * L);
 
 	for (int i = 0; i < L; i++)
@@ -63,7 +63,7 @@ float **cal_PDF_RGB(Mat &input) {
 
 
 	// Count
-	for (int i = 0; i < input.rows; i++) //x,y좌표와 더불어 3개의 컬러 채널에 대하여도 for문을 돌린다.
+	for (int i = 0; i < input.rows; i++) 
 		for (int j = 0; j < input.cols; j++)
 			for (int k = 0; k < 3; k++) {
 				count[input.at<G>(i, j)][k]++;
@@ -71,7 +71,7 @@ float **cal_PDF_RGB(Mat &input) {
 
 
 	// Compute PDF
-	for (int i = 0; i < L; i++)//count역시 L과 더불어 3개의 컬러 채널에 대하여도 for문을 돌린다
+	for (int i = 0; i < L; i++)
 		for(int j = 0; j<3 ; j++)
 			PDF[i][j] = (float)count[i][j] / (float)(input.rows * input.cols );
 
@@ -106,14 +106,14 @@ float *cal_CDF(Mat &input) {
 // generate CDF for color image
 float **cal_CDF_RGB(Mat &input) {
 
-	int count[L][3] = { 0 }; //color 이미지 이기 때문에 이차원으로 선언
+	int count[L][3] = { 0 }; 
 	float **CDF = (float**)malloc(sizeof(float*) * L);
 
 	for (int i = 0; i < L; i++) 
 		CDF[i] = (float*)calloc(3, sizeof(float));
 
 	// Count
-	for (int i = 0; i < input.rows; i++)  //x,y좌표와 더불어 3개의 컬러 채널에 대하여도 for문을 돌린다.
+	for (int i = 0; i < input.rows; i++) 
 		for (int j = 0; j < input.cols; j++)
 			for (int k = 0; k < 3; k++) {
 				count[input.at<C>(i, j)[k]][k]++;
@@ -121,7 +121,7 @@ float **cal_CDF_RGB(Mat &input) {
 
 
 	// Compute CDF
-	for (int i = 0; i < L; i++) { //count역시 L과 더불어 3개의 컬러 채널에 대하여도 for문을 돌린다
+	for (int i = 0; i < L; i++) { 
 		for (int j = 0; j < 3; j++) {
 			CDF[i][j] = (float)count[i][j] / (float)(input.rows * input.cols);
 

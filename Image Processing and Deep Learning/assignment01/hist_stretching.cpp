@@ -9,7 +9,7 @@ int main() {
 
 	cvtColor(input, input_gray, CV_RGB2GRAY);	// convert RGB to Grayscale
 
-	Mat stretched = input_gray.clone(); //  stretched 이미지를 담을 Mat 변수 선언
+	Mat stretched = input_gray.clone(); 
 
 	// PDF or transfer function txt files
 	FILE *f_PDF;
@@ -22,12 +22,11 @@ int main() {
 
 	G trans_func_stretch[L] = { 0 };
 
-	float *PDF = cal_PDF(input_gray); //gray 이미지에 대한 pdf 계산
-
+	float *PDF = cal_PDF(input_gray); 
 	linear_stretching(input_gray, stretched, trans_func_stretch, 50, 110, 10, 110);	// histogram stretching (x1 ~ x2 -> y1 ~ y2)
 	float *stretched_PDF = cal_PDF(stretched);										// stretched PDF
 
-	for (int i = 0; i < L; i++) { //파일에 쓰기
+	for (int i = 0; i < L; i++) { 
 		// write PDF
 		fprintf(f_PDF, "%d\t%f\n", i, PDF[i]);
 		fprintf(f_stretched_PDF, "%d\t%f\n", i, stretched_PDF[i]);
@@ -61,7 +60,7 @@ int main() {
 // histogram stretching (linear method)
 void linear_stretching(Mat &input, Mat &stretched, G *trans_func, G x1, G x2, G y1, G y2) {
 
-	float constant = (y2 - y1) / (float)(x2 - x1); //이미지의 x,y 비율 값 구하기
+	float constant = (y2 - y1) / (float)(x2 - x1); 
 
 	// compute transfer function
 	for (int i = 0; i < L; i++) {
