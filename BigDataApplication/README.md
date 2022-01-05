@@ -11,3 +11,7 @@ of seats for considerate seats for each time period is shown on the UI.
 ranking.
     - Since the current project is a simulation using only data on Line 2, only the
 utilization rate of considerate seats by time zone is shown on the UI.
+
+#### 2. Demo video
+[Demo Video] (https://drive.google.com/file/d/15lHonbSKRNIrbnOow91es22mk8FKyd7Y/view?usp=sharing)
+
