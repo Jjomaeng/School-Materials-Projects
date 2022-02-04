@@ -1,4 +1,4 @@
-#### 1. Introduction
+## 1. Introduction
 - Based on the data analysis of subway users, it presents information for comfortable subway use.
   - A. For general users, the expected congestion level for each section is provided using subway
 congestion statistics.
@@ -12,6 +12,6 @@ ranking.
     - Since the current project is a simulation using only data on Line 2, only the
 utilization rate of considerate seats by time zone is shown on the UI.
 
-#### 2. Demo video
+## 2. Demo video
 - https://drive.google.com/file/d/15lHonbSKRNIrbnOow91es22mk8FKyd7Y/view?usp=sharing
 
