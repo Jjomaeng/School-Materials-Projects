@@ -22,8 +22,7 @@ def conv3x3(in_channels, out_channels, stride, padding):
     return model
 
 ###########################################################################
-# Code overlaps with previous assignments : Implement the "bottle neck building block" part.
-# Hint : Think about difference between downsample True and False. How we make the difference by code?
+# Implement the "bottle neck building block" part.
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels, middle_channels, out_channels, downsample=False):
         super(ResidualBlock, self).__init__()
@@ -31,10 +30,6 @@ class ResidualBlock(nn.Module):
 
         if self.downsample:
             self.layer = nn.Sequential(
-                ##########################################
-                ############## fill in here
-                # Hint : use these functions (conv1x1, conv3x3)
-                #########################################
                 conv1x1(in_channels, middle_channels, 2, 0),
                 conv3x3(middle_channels, middle_channels, 1, 1),
                 conv1x1(middle_channels, out_channels,1, 0)
@@ -43,9 +38,6 @@ class ResidualBlock(nn.Module):
 
         else:
             self.layer = nn.Sequential(
-                ##########################################
-                ############# fill in here
-                #########################################
                 conv1x1(in_channels, middle_channels, 1, 0),
                 conv3x3(middle_channels, middle_channels, 1, 1),
                 conv1x1(middle_channels, out_channels, 1, 0)
@@ -111,8 +103,7 @@ class UNetWithResnet50Encoder(nn.Module):
         self.UnetConv3 = nn.Conv2d(64, self.n_classes, kernel_size=1, stride=1)
 
     ###########################################################################
-    # Question 2 : Implement the forward function of Resnet_encoder_UNet.
-    # Understand ResNet, UNet architecture and fill in the blanks below. (20 points)
+    # Implement the forward function of Resnet_encoder_UNet.
     def forward(self, x, with_output_feature_map=False):
         #x: 3, 256, 256
         out1 = self.layer1(x)
