@@ -3,9 +3,8 @@ import torch
 from torch.nn.modules import *
 
 ###########################################################################
-    # Question 3 : Implement the train/test module.
-    # Understand train/test codes in Practice Lecture 14, and fill in the blanks.(30 points)
-
+    # Implement the train/test module.
+    
 
 def train_model(trainloader, model, criterion, optimizer,scheduler, device):
     model.train()
@@ -13,13 +12,6 @@ def train_model(trainloader, model, criterion, optimizer,scheduler, device):
         inputs = inputs.to(device)
         labels = labels.to(device=device, dtype=torch.int64)
         criterion = criterion.cuda()
-        ##########################################
-        ############# fill in here (10 points) -> train
-        ####### Hint :
-        ####### 1. Get the output out of model, and Get the Loss
-        ####### 3. optimizer
-        ####### 4. backpropagation
-        #########################################
         outputs = model(inputs) #1. Get the output out of model
         _, preds = torch.max(outputs,1)
         loss = criterion(outputs, labels) #1. Get the Loss
@@ -53,12 +45,6 @@ def get_loss_train(model, trainloader, criterion, device):
             inputs = inputs.to(device)
             labels = labels.to(device = device, dtype = torch.int64)
             inputs = inputs.float()
-            ##########################################
-            ############# fill in here (5 points) -> (same as validation, just printing loss)
-            ####### Hint :
-            ####### Get the output out of model, and Get the Loss
-            ####### Think what's different from the above
-            #########################################
             outputs = model(inputs) #Get the output out of model
             loss = criterion(outputs, labels) #Get the Loss
             outputs = np.transpose(outputs.cpu(), (0,2,3,1))
@@ -89,12 +75,7 @@ def val_model(model, valloader, criterion, device, dir):
 
             inputs = inputs.to(device)
             labels = labels.to(device=device, dtype=torch.int64)
-            ##########################################
-            ############# fill in here (5 points) -> (validation)
-            ####### Hint :
-            ####### Get the output out of model, and Get the Loss
-            ####### Think what's different from the above
-            #########################################
+
             outputs = model(inputs) #Get the output out of model
             loss = criterion(outputs, labels) #Get the Loss
             outputs = np.transpose(outputs.cpu(), (0, 2, 3, 1))
@@ -112,13 +93,7 @@ def val_model(model, valloader, criterion, device, dir):
 
                 for j in range(temp.shape[0]):
                     for k in range(temp.shape[1]):
-                        ##########################################
-                        ############# fill in here (10 points)
-                        ####### Hint :
-                        ####### convert segmentation mask into r,g,b (both for image and predicted result)
-                        ####### image should become temp_rgb, result should become temp_label
-                        ####### You should use cls_invert[]
-                        #########################################
+
                         temp_rgb[j][k] = cls_invert[temp[j][k]]
                         temp_label[j][k] = cls_invert[temp_l[j][k]]
                 img = inputs[i].cpu()
