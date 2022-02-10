@@ -2,8 +2,7 @@ import torch.nn as nn
 import torch
 
 ###########################################################################
-# Question 1 : Implement the UNet model code.
-# Understand architecture of the UNet in practice lecture 15 -> slides 5-6 (30 points)
+# Implement the UNet model code.
 
 def conv(in_channels, out_channels):
     return nn.Sequential(
