@@ -20,8 +20,8 @@ def conv3x3(in_channels, out_channels, stride, padding):
     return model
 
 ###########################################################################
-# Question 1 : Implement the "bottle neck building block" part.
-# Hint : Think about difference between downsample True and False. How we make the difference by code?
+# Implement the "bottle neck building block" part.
+
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels, middle_channels, out_channels, downsample=False):
         super(ResidualBlock, self).__init__()
@@ -65,10 +65,8 @@ class ResidualBlock(nn.Module):
 
 
 ###########################################################################
-# Question 2 : Implement the "class, ResNet50_layer4" part.
-# Understand ResNet architecture and fill in the blanks below. (25 points)
-# (blank : #blank#, 1 points per blank )
-# Implement the code.
+# Implement the "class, ResNet50_layer4" part.
+
 class ResNet50_layer4(nn.Module):
     def __init__(self, num_classes= 10 ):
         super(ResNet50_layer4, self).__init__()
